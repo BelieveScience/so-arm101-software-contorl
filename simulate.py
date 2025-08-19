@@ -1,5 +1,3 @@
-import pybullet as p
-import pybullet_data
 import vtk
 import numpy as np
 from vtkmodules.vtkCommonMath import vtkMatrix4x4
@@ -9,20 +7,6 @@ from vtkmodules.vtkRenderingAnnotation import vtkAxesActor
 from vtkmodules.vtkInteractionWidgets import vtkSliderWidget,vtkSliderRepresentation2D
 from vtkmodules.vtkRenderingCore import vtkCoordinate
 from vtkmodules.vtkCommonCore import vtkCommand
-# phyicesClient = p.connect(p.GUI)
-# p.setAdditionalSearchPath(pybullet_data.getDataPath())
-#
-# robot_id = p.loadURDF('D:/PL/Code/SO-ARM100-main/Simulation/SO101/so101_new_calib.urdf',[0.0206915 ,0.0221255 ,0.0300817],useFixedBase=True)
-# p.setGravity(0,0,9.8)
-# p.calculateInverseKinematics2()
-# while True:
-#     p.stepSimulation()
-#     p.getMouseEvents()
-#
-# p.disconnect()
-
-
-
 
 style = vtk.vtkInteractorStyleTrackballCamera()
 stlfilename = 'assets/'
@@ -46,23 +30,6 @@ actor.SetPosition(0.0206915 ,0.0221255 ,0.0300817)
 base.AddPart(actor)
 
 axes = vtkAxesActor()
-# a = np.zeros((4,4))
-# actor.GetMatrix().DeepCopy(a.ravel(),actor.GetMatrix())
-# b = np.zeros((4,4))
-# trans = vtkTransform()
-# trans.RotateX(90)
-# trans.GetMatrix().DeepCopy(b.ravel(),trans.GetMatrix())
-# c = b*a
-# mat = vtkMatrix4x4()
-# for i in range(4):
-#     for j in range(4):
-#         mat.SetElement(i,j,c[i,j])
-# axes.SetUserMatrix(actor.GetMatrix())
-# axes.RotateX(90)
-m = vtkMatrix4x4()
-# m.Identity()
-# axes.SetUserMatrix(m)
-# axes.SetPosition(0.3,0.3,0.3)
 ren.AddActor(axes)
 
 reader = vtk.vtkSTLReader()
@@ -362,18 +329,6 @@ shoulder_arm_assembly.SetOrigin(b[0][3],b[1][3],b[2][3])
 ren.AddActor(shoulder_arm_assembly)
 
 
-# jaw.SetOrientation(0,0,45)
-# gripper_assembly.SetOrientation(0,45,0)
-# wrist_assembly.SetOrientation(45,0,0)
-# lower_arm_assembly.SetOrientation(-45,0,0)
-# upper_arm_assembly.SetOrientation(45,0,0)
-# shoulder_arm_assembly.SetOrientation(0,0,45)
-# axes1 = vtk.vtkAxesActor()
-# print(jaw.GetMatrix())
-# axes.SetUserMatrix(gripper.GetMatrix())
-# axes1.RotateX(180)
-# ren.AddActor(axes1)
-
 represent = vtkSliderRepresentation2D()
 represent.SetMinimumValue(-180)
 represent.SetMaximumValue(180)
@@ -532,3 +487,4 @@ slider5.AddObserver(vtkCommand.InteractionEvent,callback5)
 renwin.Render()
 iren.Initialize()
 iren.Start()
+
