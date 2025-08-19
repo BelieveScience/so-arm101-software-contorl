@@ -6,4 +6,4 @@ pip install vtk
 
 ![Arm Demo](arm_demo.PNG)
 
-左侧为关节控制滑块，右侧为机械臂三维模型显示。
+On the left is the joint control slider, and on the right is the display of the 3D model of the robotic arm.
